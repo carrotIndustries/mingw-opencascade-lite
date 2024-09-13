@@ -9,6 +9,10 @@ jobs:
   build-win32:
     runs-on: windows-latest
     steps:
+    - name: Set git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
     - uses: actions/checkout@v4
     - uses: msys2/setup-msys2@v2
       with:
