@@ -22,7 +22,7 @@ jobs:
     - name: Build
       shell: msys2 {0}
       run: |
-        makepkg -s
+        makepkg -s --noconfirm
     - uses: actions/upload-artifact@v4
       with:
         name: opencascade-lite
