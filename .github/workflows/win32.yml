@@ -1,0 +1,23 @@
+name: Build Windows binaries
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  build-win32:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: msys2/setup-msys2@v2
+      with:
+        update: true
+    - name: Build
+      shell: msys2 {0}
+      run: |
+        makepkg -s
+    - uses: actions/upload-artifact@v4
+      with:
+        name: opencascade-lite
+        path: *.pkg.tar.zst
