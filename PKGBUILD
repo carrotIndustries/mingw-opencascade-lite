@@ -51,7 +51,8 @@ source=("opencascade-${pkgver}.tgz::https://git.dev.opencascade.org/gitweb/?p=oc
         "0010-Fix-TBB-detection.patch"
         "0011-Fix-linking-TKXDE.patch"
         "0013-ExpToCasExe-Fix-building-static.patch"
-        "0014-aarch64-mm_alloc.patch")
+        "0014-aarch64-mm_alloc.patch"
+        "0015-freetype.patch")
 
 sha256sums=('2fb23c8d67a7b72061b4f7a6875861e17d412d524527b2a96151ead1d9cfa2c1'
             '0bbba5858e3e478759dac3d4802f821ec633304a63aeef542e0e4e0e0674e205'
@@ -66,7 +67,8 @@ sha256sums=('2fb23c8d67a7b72061b4f7a6875861e17d412d524527b2a96151ead1d9cfa2c1'
             '3d927cd0b2def78db8def263cd40bfc8520b8c8520bf5a7543f0775e02e5e86e'
             '530d03546cb545e7b7290359fa569c0a7902ea5603a50b2834f1136b3949380f'
             '6c1e3cfebecc398424d94de43d501d2718800bf101f90a156c086fad4ba042e0'
-            'daaa4243d6f88a32a3ff920af84d8add11a2582ba10cf720574871eb3503e179')
+            'daaa4243d6f88a32a3ff920af84d8add11a2582ba10cf720574871eb3503e179'
+            '824f87f00e2f48ad8066ee7f5b3ec9a5c6c400117689e757160899683f62251f')
 
 # Helper macros to help make tasks easier #
 apply_patch_with_msg() {
@@ -92,7 +94,8 @@ prepare() {
     0010-Fix-TBB-detection.patch \
     0011-Fix-linking-TKXDE.patch \
     0013-ExpToCasExe-Fix-building-static.patch \
-    0014-aarch64-mm_alloc.patch
+    0014-aarch64-mm_alloc.patch \
+    0015-freetype.patch
 
   find . -name "*.orig" -exec rm -f {} \;
 }
