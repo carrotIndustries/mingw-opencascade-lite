@@ -145,29 +145,6 @@ build() {
     _extra_config+=("-DCMAKE_BUILD_TYPE=Debug")
   fi
 
-  if [[ "${MSYSTEM}" == "MINGW64" ]]; then
-
-  msg2 "Building static libraries"
-  mkdir -p "${srcdir}/build-${MSYSTEM}-static" && cd "${srcdir}/build-${MSYSTEM}-static"
-
-  MSYS2_ARG_CONV_EXCL="-DCMAKE_INSTALL_PREFIX=" \
-  ${MINGW_PREFIX}/bin/cmake -Wno-dev \
-    -DCMAKE_INSTALL_PREFIX=${MINGW_PREFIX} \
-    -GNinja \
-    "${_extra_config[@]}" \
-    -DINSTALL_DIR_LAYOUT="Unix" \
-    -DBUILD_LIBRARY_TYPE="Static" \
-    "${common_config[@]}" \
-    -D3RDPARTY_TK_LIBRARY="${MINGW_PREFIX}/lib/libtk86.a" \
-    -D3RDPARTY_TCL_LIBRARY="${MINGW_PREFIX}/lib/libtcl86.a" \
-    -D3RDPARTY_FREETYPE_LIBRARY="${MINGW_PREFIX}/lib/libfreetype.a" \
-    -DOPENVDB_USE_STATIC_LIBS=ON \
-    ../occt-${_pkgver2}
-
-  ${MINGW_PREFIX}/bin/cmake --build .
-
-  fi
-
   mkdir -p "${srcdir}/build-${MSYSTEM}-shared" && cd "${srcdir}/build-${MSYSTEM}-shared"
 
   MSYS2_ARG_CONV_EXCL="-DCMAKE_INSTALL_PREFIX=" \
@@ -186,12 +163,6 @@ build() {
 }
 
 package() {
-  if [[ "${MSYSTEM}" == "MINGW64" ]]; then
-    # Static Install
-    cd "${srcdir}/build-${MSYSTEM}-static"
-    DESTDIR="${pkgdir}" ${MINGW_PREFIX}/bin/cmake --install .
-  fi
-
   # Shared Install
   cd "${srcdir}/build-${MSYSTEM}-shared"
   DESTDIR="${pkgdir}" ${MINGW_PREFIX}/bin/cmake --install .
