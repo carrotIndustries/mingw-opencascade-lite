@@ -7,7 +7,7 @@ provides=("${MINGW_PACKAGE_PREFIX}-${_realname}")
 conflicts=("${MINGW_PACKAGE_PREFIX}-${_realname}")
 pkgver=7.7.2
 _pkgver2=V${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc='Open CASCADE Technology, 3D modeling & numerical simulation (mingw-w64)'
 arch=('any')
 mingw_arch=('mingw64' 'ucrt64' 'clang64' 'clangarm64')
@@ -103,6 +103,8 @@ prepare() {
 build() {
   local common_config
   common_config=(
+    -DBUILD_MODULE_Draw=Off
+    -DBUILD_MODULE_Visualization=Off
     -DUSE_D3D=1
     -D3RDPARTY_DIR="${MINGW_PREFIX}"
     -D3RDPARTY_TK_DIR="${MINGW_PREFIX}"
