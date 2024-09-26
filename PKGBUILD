@@ -7,7 +7,7 @@ provides=("${MINGW_PACKAGE_PREFIX}-${_realname}")
 conflicts=("${MINGW_PACKAGE_PREFIX}-${_realname}")
 pkgver=7.7.2
 _pkgver2=V${pkgver//./_}
-pkgrel=2
+pkgrel=3
 pkgdesc='Open CASCADE Technology, 3D modeling & numerical simulation (mingw-w64)'
 arch=('any')
 mingw_arch=('mingw64' 'ucrt64' 'clang64' 'clangarm64')
@@ -68,7 +68,7 @@ sha256sums=('2fb23c8d67a7b72061b4f7a6875861e17d412d524527b2a96151ead1d9cfa2c1'
             '530d03546cb545e7b7290359fa569c0a7902ea5603a50b2834f1136b3949380f'
             '6c1e3cfebecc398424d94de43d501d2718800bf101f90a156c086fad4ba042e0'
             'daaa4243d6f88a32a3ff920af84d8add11a2582ba10cf720574871eb3503e179'
-            '2e6d43b11054f239b27602d755e313bed6e614013c2af1ff99ff1bbda27a67b4')
+            'dfd97f0945641121fd4927bad8703bcf2a2d677fae352e7284cc53e2045abded')
 
 # Helper macros to help make tasks easier #
 apply_patch_with_msg() {
